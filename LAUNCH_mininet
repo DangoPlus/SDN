@@ -1,0 +1,23 @@
+sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.128 --topo linear,2
+
+sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.128 --custom ./mininet/custom/test.py --topo mytopo
+
+
+ ./bin/karaf to launch opendaylight
+
+
+sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.128 --topo linear,2
+
+sudo mn --topo single,3 --mac --switch ovsk --controller=remote,ip=1192.168.226.128,port=6633 -x
+
+http://localhost:8181/index.html#/topology
+
+in mininet: h1 ifconfig
+
+ h1 python -m SimpleHTTPServer 80 &
+ h4 wget -O -h1
+
+h1 kill %python
+
+
+mn -x 命令 分離窗口

@@ -1,0 +1,12 @@
+iperf host之間聯通測試
+
+in mininet
+	sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.128 --topo linear,2 -x
+
+topology
+
+
+h2 host
+	iperf -s
+h1 host 
+	iperf -c 10.0.0.2 -P 30 -t 60

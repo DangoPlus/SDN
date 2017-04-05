@@ -1,0 +1,5 @@
+sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.128 --custom ./custom/test.py --topo mytopo
+
+python bwtest.py
+sudo python custom/bwtest.py 
+
