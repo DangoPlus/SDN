@@ -1,0 +1,29 @@
+sudo mn --mac --switch ovsk,protocols=OpenFlow13 --controller=remote,ip=192.168.226.141 --topo linear,2
+
+sudo mn --custom test.py --topo mytopo --switch ovsk --controller=remote,ip=192.168.226.141 --mac --link tc
+
+
+sudo ./pox.py testcon samples.pretty_log web messenger messenger.log_service messenger.ajax_transport openflow.of_service poxdesk openflow.discovery poxdesk.tinytopo poxdesk.terminal
+
+
+demo 5
+
+1  in mininet
+
+sudo python mini2.py
+
+在Mininet中执行h1 ping -i 0.1 h4，每秒从h1传送10个包到h4。
+
+2  in pox
+
+sudo ./pox.py testcon samples.pretty_log web messenger messenger.log_service messenger.ajax_transport openflow.of_service poxdesk openflow.discovery poxdesk.tinytopo poxdesk.terminal
+
+
+auto change s1 port 5 send to h4 then change s1 port 6 to send to h4
+
+SDN环境中，控制器可以通过对交换机下发流表操作来控制交换机的转发行为。在本实验中，基于Mininet脚本，编写POX脚本，动态改变交换机的转发规则。
+
+在该环境下，假设H1 ping H4，初始的路由规则是S1-S2-S5，一秒后，路由转发规则变为S1-S3-S5，再过一秒，规则变为S1-S4-S5，然后再回到最初的转发规则S1-S2-S5。通过这个循环调度的例子动态地改变交换机的转发规则。
+
+每秒从h1传送10个包到h4
+先从s1_p4 (switch 1, port 4)发出10个包，然后是从s1_p5，接着从s1_p6，如此循环调度

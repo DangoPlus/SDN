@@ -1,0 +1,6 @@
+Use "feature install [feature name]" to install feature
+feature:install odl-l2switch-switch-ui
+feature:install odl-mdsal-all
+feature:install odl-restconf
+feature:install odl-dlux-all
+Use feature:list -i to list all installed features
